@@ -1,20 +1,21 @@
 # Project-2-Exploratory-Data-Analysis-EDA
 Exploratory Data Analysis (EDA) project using Python and Pandas to analyze data distributions, statistics, trends, and outliers
-# Exploratory Data Analysis (EDA)
 
 ## Project Overview
 
-This project focuses on Exploratory Data Analysis (EDA) to understand patterns, trends, distributions, and important insights from a dataset.
+This project focuses on performing Exploratory Data Analysis (EDA) on an e-commerce sales dataset using Python. The analysis was conducted to understand the dataset's statistics, distributions, trends, and potential outliers.
 
-The analysis was performed using Python and Pandas. Different statistical and analytical techniques were used to summarize the dataset and identify useful patterns.
+The project contains 1,200 orders and 14 original features related to customers, products, pricing, payments, order status, and sales.
 
 ## Objectives
 
-* Calculate basic descriptive statistics
+* Calculate basic statistics such as mean, median, and count
 * Analyze data distributions
-* Identify patterns and trends
-* Detect potential outliers
-* Summarize important observations from the data
+* Identify trends and patterns
+* Detect potential outliers using the IQR method
+* Analyze product revenue
+* Examine order status patterns
+* Summarize key business observations
 
 ## Tools & Technologies
 
@@ -24,75 +25,137 @@ The analysis was performed using Python and Pandas. Different statistical and an
 * Matplotlib
 * Seaborn
 * Google Colab
+* Excel
+
+## Dataset Information
+
+* **Total Orders:** 1,200
+* **Original Features:** 14
+* **Date Range:** 2023–2025
+* **Dataset Type:** E-commerce / Sales Data
+
+### Main Features
+
+* OrderID
+* Date
+* CustomerID
+* Product
+* Quantity
+* UnitPrice
+* ShippingAddress
+* PaymentMethod
+* OrderStatus
+* TrackingNumber
+* ItemsInCart
+* CouponCode
+* ReferralSource
+* TotalPrice
 
 ## Analysis Performed
 
-### 1. Data Overview
+### 1. Dataset Overview
 
-The dataset was explored to understand its structure, columns, data types, and number of records.
+The dataset structure, number of records, columns, data types, and missing values were examined using Pandas.
 
-### 2. Descriptive Statistics
+The dataset contains 1,200 records across 14 features.
 
-Basic statistical measures were calculated to understand the dataset, including:
+### 2. Basic Statistics
 
-* Count
-* Mean
-* Median
-* Minimum
-* Maximum
-* Standard deviation
+Descriptive statistics were calculated for the numerical variables.
 
-These statistics helped summarize the numerical data and understand its overall distribution.
+Key results:
 
-### 3. Data Distribution
+* **Total Transactions:** 1,200
+* **Quantity Mean:** 2.95
+* **Quantity Median:** 3.00
+* **Unit Price Mean:** $356.41
+* **Unit Price Median:** $364.21
+* **Total Order Value Mean:** $1,053.97
+* **Total Order Value Median:** $823.62
 
-The distributions of important numerical variables were analyzed using statistical summaries and visualizations.
+The difference between the mean and median TotalPrice indicates that the distribution is affected by higher-value orders.
 
-This helped identify how values were spread across the dataset.
+### 3. Outlier Analysis
+
+The IQR method was used to identify potential statistical outliers.
+
+Results:
+
+* **Quantity:** 0 outliers
+* **UnitPrice:** 0 outliers
+* **ItemsInCart:** 0 outliers
+* **TotalPrice:** 8 outliers
+
+The identified TotalPrice outliers were high-value purchases rather than obvious data-entry errors. The maximum TotalPrice observed was approximately $3,456.40.
 
 ### 4. Trend Analysis
 
-The dataset was analyzed to identify noticeable patterns and trends in the available variables.
+Monthly sales were calculated by grouping orders by year and month.
 
-Visualizations were used where appropriate to make these patterns easier to understand.
+A line chart was used to visualize the monthly revenue trend from 2023 to 2025.
 
-### 5. Outlier Detection
+The analysis showed that monthly sales generally remained within an approximate range of $40,000–$50,000.
 
-Potential outliers were identified by analyzing the distribution of numerical variables.
+### 5. Product Revenue Analysis
 
-Outliers were examined to determine whether they represented unusual observations or values that required further investigation.
+Revenue was grouped by product to compare product performance.
 
-### 6. Key Observations
+Key observations:
 
-The EDA helped identify important patterns, distributions, trends, and unusual values within the dataset.
+* **Chairs:** approximately $195.6K revenue
+* **Printers:** approximately $195.6K revenue
+* **Phones:** approximately $151.7K revenue
 
-The findings from this analysis can be used as a foundation for further data analysis and decision-making.
+Chairs and Printers generated the highest revenue among the products analyzed, while Phones generated the lowest revenue.
 
-## Key Skills Demonstrated
+### 6. Order Status Analysis
 
-* Exploratory Data Analysis
-* Descriptive Statistics
-* Data Visualization
-* Trend Analysis
-* Outlier Detection
-* Data Interpretation
-* Analytical Thinking
-* Python
-* Pandas
-* NumPy
+Order statuses were examined to understand the distribution of completed and unsuccessful orders.
+
+The analysis showed that:
+
+* Cancelled Orders: 250
+* Returned Orders: 247
+* Cancelled + Returned: 497 orders
+* Approximately 41.42% of all orders were Cancelled or Returned.
+
+This pattern was identified as an important observation for further investigation into fulfillment and customer-retention factors.
+
+## Key Observations
+
+1. The dataset contains 1,200 transactions across 14 features.
+2. Customers purchase approximately 3 units per order on average.
+3. Total order values are right-skewed because some orders have significantly higher values.
+4. Quantity, UnitPrice, and ItemsInCart showed no statistical outliers using the IQR method.
+5. Eight statistical outliers were identified in TotalPrice.
+6. Monthly revenue remained relatively stable, generally around $40K–$50K.
+7. Chairs and Printers generated the highest product-level revenue.
+8. Phones generated the lowest product-level revenue among the analyzed products.
+9. Cancelled and Returned orders together represented 497 orders, or approximately 41.42% of the dataset.
+
+## Visualizations
+
+The project includes visualizations for:
+
+* Monthly Revenue Trend
+* Revenue by Product
+* Data Distributions
+* Outlier Analysis
+
+These visualizations help make trends and patterns easier to interpret.
 
 ## How to Run
 
 This project was developed using Google Colab.
 
-### Option 1: Google Colab
+### Using Google Colab
 
-1. Open the `.ipynb` notebook in Google Colab.
-2. Upload the dataset used for the analysis.
+1. Open `EDA_Analysis.ipynb` in Google Colab.
+2. Upload `Dataset for Data Analytics (1).xlsx` when prompted.
 3. Run the notebook cells from top to bottom.
-4. Review the statistical results, visualizations, trends, and observations.
+4. Review the statistical calculations, visualizations, outlier analysis, and observations.
 
-### Option 2: Local Python Environment
+### Local Python Environment
 
 Install the required libraries:
 
@@ -100,7 +163,24 @@ Install the required libraries:
 pip install pandas numpy matplotlib seaborn openpyxl
 ```
 
-Open the notebook using Jupyter Notebook, JupyterLab, or another compatible Python environment and run the cells from top to bottom.
+Then open the `.ipynb` notebook using Jupyter Notebook, JupyterLab, or another compatible environment.
+
+## Skills Demonstrated
+
+* Exploratory Data Analysis
+* Descriptive Statistics
+* Mean and Median Analysis
+* Outlier Detection
+* IQR Method
+* Trend Analysis
+* Data Visualization
+* Revenue Analysis
+* Business Data Interpretation
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
 
 ## Project Status
 
